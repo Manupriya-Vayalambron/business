@@ -347,8 +347,9 @@ body {
             const menuContent = document.getElementById('menuContent');
             
             // Set initial state
-            travelBtn.classList.add('active');
-            travelContent.classList.add('active');
+            travelBtn.classList.remove('active');
+            travelContent.classList.remove('active');
+            menuContent.classList.remove('active');
             menuContent.classList.remove('active');
             
             // Tab switching
