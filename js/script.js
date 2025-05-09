@@ -1,801 +1,307 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #6A4C93; /* Modern purple - main brand color */
-    --secondary-color: #8AC926; /* Fresh green - for accents */
-    --accent-color: #FF595E; /* Vibrant red - for call-to-action */
-    --dark-color: #1A1A2E; /* Deep navy - for navigation/footer */
-    --light-color: #F8F9FA; /* Off-white - for background */
-    --text-color: #212529; /* Dark gray - for main text */
-    --text-light: #6C757D; /* Medium gray - for secondary text */
-    --white: #FFFFFF; /* Pure white */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-}
-
-body {
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--light-color);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Typography */
-h1, h2, h3, h4 {
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-}
-
-h1 {
-    font-size: 2.2rem;
-}
-
-h2 {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-}
-
-h3 {
-    font-size: 1.4rem;
-}
-
-p {
-    margin-bottom: 1rem;
-    color: var(--text-light);
-}
-
-/* Header Styles */
-header {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 1.5rem 1rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-header p {
-    color: var(--white);
-    opacity: 0.9;
-    font-size: 1.1rem;
-}
-
-/* Navigation */
-nav {
-    background-color: var(--dark-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav li {
-    flex: 1;
-    text-align: center;
-    min-width: 120px;
-}
-
-nav a {
-    color: var(--white);
-    text-decoration: none;
-    padding: 1rem;
-    display: block;
-    transition: var(--transition);
-    font-weight: 500;
-}
-
-nav a:hover {
-    background-color: var(--primary-color);
-}
-
-nav ul li a.active {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    font-weight: 600;
-    box-shadow: var(--shadow);
-}
-
-/* Main Content */
-main {
-    flex: 1;
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-}
-
-/* Gallery Section */
-#gallery {
-    padding: 2rem 1rem;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    aspect-ratio: 1/1; /* Square items */
-    transition: var(--transition);
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Footer */
-footer {
-    background-color: var(--dark-color);
-    color: var(--white);
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: auto;
-}
-
-footer p {
-    color: var(--white);
-    margin-bottom: 0;
-}
-
-/* Popup Styles */
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s;
-}
-
-.popup-content {
-    background-color: var(--white);
-    margin: 10vh auto;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 700px;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-    animation: slideDown 0.3s;
-}
-
-.close-btn {
-    position: absolute;
-    right: 1.5rem;
-    top: 1rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.close-btn:hover {
-    color: var(--primary-color);
-    transform: rotate(90deg);
-}
-
-/* Buttons */
-.order-option-btn {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex: 1;
-    min-width: 150px;
-    box-shadow: var(--shadow);
-}
-
-.order-option-btn:hover,
-.order-option-btn:focus {
-    background-color: var(--dark-color);
-    outline: none;
-}
-
-.order-option-btn.active {
-    background-color: var (--dark-color);
-}
-
-/* Responsive tab button container */
-.option-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
-
-/* Order content */
-.order-content {
-    display: none;
-}
-
-.order-content.active {
-    display: block;
-    margin-top: 1.5rem;
-}
-
-/* Snacks Grid */
-.snack-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.snack-item {
-    background-color: var(--light-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.snack-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.price {
-    font-weight: bold;
-    color: var(--accent-color);
-    font-size: 1.1rem;
-}
-
-/* Add to cart button */
-.add-to-cart {
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-}
-
-.add-to-cart:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* Cart Section */
-.cart-section {
-    background-color: var(--light-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-top: 2rem;
-    box-shadow: var(--shadow);
-}
-
-#cartItems li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #ddd;
-    align-items: center;
-    gap: 1rem;
-}
-
-.remove-item {
-    background: transparent;
-    border: none;
-    color: #d11a2a;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-#confirmOrder {
-    background-color: #25D366;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 1rem;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-}
-
-#confirmOrder:hover {
-    background-color: #128C7E;
-}
-
-/* Menu List */
-.menu-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-/* Individual Menu Items */
-.menu-item {
-    background-color: var(--light-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.menu-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.menu-item h4 {
-    margin-top: 0;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.menu-item ul {
-    padding-left: 1.2rem;
-    margin: 0.5rem 0 0 0;
-}
-
-.menu-item li {
-    margin-bottom: 0.4rem;
-    color: var (--dark-color);
-}
-
-/* Game Page Styles */
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem 0;
-}
-
-.game-card {
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.game-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.play-btn {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--white);
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 1rem;
-    font-weight: 500;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-}
-
-.play-btn:hover {
-    background-color: #e65100;
-    transform: translateY(-2px);
-}
-
-/* Customer's Corner Specific Styles */
-.button-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1rem 0;
-}
-
-.action-btn {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 1.2rem;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.action-btn:hover {
-    background-color: #1b5e20;
-    transform: translateY(-2px);
-}
-
-.action-btn:active {
-    transform: translateY(0);
-}
-
-/* Customer's Corner - Questions Section */
-.question {
-    background-color: #f9f9f9; /* Light background for the question box */
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow); /* Subtle shadow for a modern look */
-    transition: var(--transition); /* Smooth hover effect */
-}
-
-.question:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-}
-
-.question h3 {
-    font-size: 1.5rem;
-    color: var(--primary-color); /* Highlighted question title */
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.question p {
-    font-size: 1rem;
-    color: var(--text-color); /* Standard text color for the question content */
-    line-height: 1.6;
-}
-
-/* Options for Questions */
-.options {
-    list-style-type: none;
-    margin: 1rem 0;
-    padding: 0;
-}
-
-.options li {
-    padding: 0.8rem;
-    margin-bottom: 0.5rem;
-    background-color: var(--white); /* White background for options */
-    border-left: 4px solid var(--secondary-color); /* Accent border for options */
-    border-radius: 5px;
-    transition: var(--transition); /* Smooth hover effect */
-    cursor: pointer;
-}
-
-.options li:hover {
-    background-color: var(--light-color); /* Light gray on hover */
-    border-left-color: var(--primary-color); /* Change border color on hover */
-}
-
-/* Answer Section */
-.answer {
-    background-color: #e8f5e9; /* Light green for correct answers */
-    padding: 1rem;
-    border-radius: 5px;
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: var(--dark-color); /* Dark text for readability */
-    font-weight: 500;
-    box-shadow: var(--shadow); /* Subtle shadow for the answer box */
-}
-
-/* Ad Popup Styles */
-.ad-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.3s;
-}
-
-.ad-content {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s;
-}
-
-.ad-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.ad-content p {
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-.close-ad {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.close-ad:hover {
-    color: var(--primary-color);
-    transform: rotate(90deg);
-}
-
-.ad-contact {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.call-btn, .whatsapp-btn {
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.call-btn {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.call-btn:hover {
-    background-color: #1b5e20;
-}
-
-.whatsapp-btn {
-    background-color: #25D366;
-    color: white;
-}
-
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-}
-
-/* Animation for ad popup */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+// Function to show popup with dynamic content
+function showPopup(type) {
+    const popup = document.getElementById('infoPopup');
+    const title = document.getElementById('popupTitle');
+    const content = document.getElementById('popupContent');
+    
+    // Set title based on button clicked
+    switch(type) {
+        case 'news':
+            title.textContent = "Today's News Highlights";
+            fetchNews(content);
+            break;
+        case 'neet':
+            title.textContent = "NEET Preparation Question";
+            fetchQuestion(content, 'neet');
+            break;
+        case 'jee':
+            title.textContent = "JEE Preparation Question";
+            fetchQuestion(content, 'jee');
+            break;
+        case 'ssc':
+            title.textContent = "SSC Preparation Question";
+            fetchQuestion(content, 'ssc');
+            break;
+        case 'health':
+            title.textContent = "Health Tip of the Day";
+            fetchHealthTip(content);
+            break;
     }
-    to {
-        opacity: 1;
+    
+    popup.style.display = 'block';
+}
+
+// Function to close popup
+function closePopup() {
+    document.getElementById('infoPopup').style.display = 'none';
+}
+
+// Fetch news from Indian news source (using RSS to JSON converter)
+async function fetchNews(container) {
+    container.innerHTML = "<p>Loading news...</p>";
+    
+    try {
+        // Using an RSS to JSON proxy service
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.ndtv.com/rss/latest');
+        const data = await response.json();
+        
+        let html = '<div class="news-container">';
+        data.items.slice(0, 5).forEach(item => {
+            html += `
+                <div class="news-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description.replace(/<[^>]*>/g, '').substring(0, 150)}...</p>
+                    <a href="${item.link}" target="_blank">Read more</a>
+                </div>
+            `;
+        });
+        html += '</div>';
+        
+        container.innerHTML = html;
+    } catch (error) {
+        container.innerHTML = "<p>Couldn't load news. Please try again later.</p>";
+        console.error("Error fetching news:", error);
     }
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+// Fetch exam questions (stored locally)
+function fetchQuestion(container, examType) {
+    // In a real implementation, you might fetch from a database
+    // For now, using sample questions
+    
+    const questions = {
+        neet: {
+            question: "Which of the following is not a function of the liver?",
+            options: ["A. Glycogenesis", "B. Detoxification", "C. Secretion of bile", "D. Secretion of digestive enzymes"],
+            answer: "D. Secretion of digestive enzymes (This is done by pancreas)"
+        },
+        jee: {
+            question: "If f(x) = x³ - 3x² + 3x - 1, then f(2) is equal to:",
+            options: ["A. 0", "B. 1", "C. -1", "D. 2"],
+            answer: "B. 1 (Solution: f(2) = 8 - 12 + 6 - 1 = 1)"
+        },
+        ssc: {
+            question: "The 'Dandi March' was associated with which of the following movements?",
+            options: ["A. Non-Cooperation Movement", "B. Civil Disobedience Movement", "C. Quit India Movement", "D. Swadeshi Movement"],
+            answer: "B. Civil Disobedience Movement (1930)"
+        }
+    };
+    
+    const q = questions[examType];
+    container.innerHTML = `
+        <div class="question">
+            <p><strong>Question:</strong> ${q.question}</p>
+            <ul class="options">${q.options.map(opt => `<li>${opt}</li>`).join('')}</ul>
+            <details>
+                <summary>View Answer</summary>
+                <p class="answer">${q.answer}</p>
+            </details>
+        </div>
+    `;
 }
 
-/* Cart Button and Modal */
-.cart-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 1000;
+// Sample health tip
+function fetchHealthTip(container) {
+    const tips = [
+        "Drinking warm water with lemon in the morning aids digestion.",
+        "Makhana (fox nuts) are rich in protein and low in cholesterol.",
+        "Taking short breaks while studying improves retention.",
+        "Proper hydration is essential for maintaining concentration."
+    ];
+    
+    const todayTip = tips[new Date().getDay() % tips.length];
+    container.innerHTML = `
+        <div class="health-tip">
+            <p>${todayTip}</p>
+            <small>Health Tip of the Day</small>
+        </div>
+    `;
 }
 
-.cart-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
+// Ad Popup Functionality - ALWAYS SHOW
+document.addEventListener('DOMContentLoaded', function() {
+    // Always show the ad after 1 second delay
+    setTimeout(() => {
+        document.getElementById('adPopup').style.display = 'flex';
+    }, 1000);
+    
+    // Close button functionality
+    document.querySelector('.close-ad').addEventListener('click', function() {
+        document.getElementById('adPopup').style.display = 'none';
+    });
+    
+    // Close when clicking outside ad content
+    document.getElementById('adPopup').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
 
-.cart-modal.hidden {
-    display: none;
-}
+    const travelBtn = document.getElementById('travelBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const travelContent = document.getElementById('travelContent');
+    const menuContent = document.getElementById('menuContent');
 
-.cart-modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-}
+    // Initially set both buttons as inactive
+    travelBtn.classList.remove('active');
+    menuBtn.classList.remove('active');
+    travelContent.classList.remove('active');
 
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
+    // Add event listeners to activate buttons when clicked
+    travelBtn.addEventListener('click', function () {
+        travelBtn.classList.add('active');
+        menuBtn.classList.remove('active');
+        travelContent.classList.add('active');
+        menuContent.classList.remove('active');
+    });
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        padding: 1.5rem 1rem;
+    menuBtn.addEventListener('click', function () {
+        menuBtn.classList.remove('inactive');
+        menuBtn.classList.add('active');
+        travelBtn.classList.remove('active');
+        menuContent.classList.add('active');
+        travelContent.classList.remove('active');
+    });
+
+    // Shopping cart functionality
+    const cart = [];
+    const cartItemsList = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartModal = document.getElementById('cartModal');
+    const cartButton = document.getElementById('cartButton');
+    const closeCartModal = document.getElementById('closeCartModal');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const DELIVERY_CHARGE = 15;
+
+    // Show cart modal when "Your Cart" button is clicked
+    cartButton.addEventListener('click', () => {
+        cartModal.classList.remove('hidden');
+    });
+
+    // Close cart modal
+    closeCartModal.addEventListener('click', () => {
+        cartModal.classList.add('hidden');
+    });
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.getAttribute('data-item');
+            const price = parseFloat(this.getAttribute('data-price'));
+
+            // Check if item already exists in the cart
+            const existingItem = cart.find(cartItem => cartItem.item === item);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ item, price, quantity: 1 });
+            }
+
+            updateCart();
+
+            // Show cart if it was hidden
+            if (cartSection.classList.contains('hidden')) {
+                cartSection.classList.remove('hidden');
+            }
+        });
+    });
+
+    function updateCart() {
+        // Clear current items
+        cartItemsList.innerHTML = '';
+
+        // Add all items
+        let total = 0;
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${item.item} (x${item.quantity})</span>
+                <span>₹${item.price * item.quantity}</span>
+                <div>
+                    <button class="decrement-item" data-index="${index}">-</button>
+                    <button class="increment-item" data-index="${index}">+</button>
+                    <button class="remove-item" data-index="${index}">✕</button>
+                </div>
+            `;
+            cartItemsList.appendChild(li);
+            total += item.price * item.quantity;
+        });
+
+        // Add event listeners to increment, decrement, and remove buttons
+        document.querySelectorAll('.increment-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                cart[index].quantity += 1;
+                updateCart();
+            });
+        });
+
+        document.querySelectorAll('.decrement-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+                updateCart();
+                if (cart.length === 0) {
+                    cartSection.classList.add('hidden');
+                }
+            });
+        });
+
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                cart.splice(index, 1);
+                updateCart();
+                if (cart.length === 0) {
+                    cartSection.classList.add('hidden');
+                }
+            });
+        });
+
+        // Update total with delivery charge
+        if (cart.length > 0) {
+            total += DELIVERY_CHARGE;
+            cartTotal.textContent = `Total: ₹${total} (including ₹${DELIVERY_CHARGE} delivery charge)`;
+            cartTotal.style.display = 'block';
+        } else {
+            cartTotal.style.display = 'none'; // Hide total when cart is empty
+        }
     }
 
-    h1 {
-        font-size: 1.8rem;
-    }
+    // WhatsApp order confirmation
+    const confirmOrderBtn = document.getElementById('confirmOrder');
+    confirmOrderBtn.addEventListener('click', function () {
+        if (cart.length === 0) {
+            alert('Please add items to your order first');
+            return;
+        }
 
-    h2 {
-        font-size: 1.5rem;
-    }
+        const busNumber = prompt('Please enter your KSRTC bus number plate:');
+        if (!busNumber) {
+            alert('Bus number is required to place your order');
+            return;
+        }
 
-    nav ul {
-        flex-direction: column;
-    }
+        // Prepare WhatsApp message
+        let message = 'Hello! I would like to order:\n\n';
+        let total = 0;
 
-    .popup-content {
-        width: 95%;
-        margin: 5vh auto;
-        padding: 1.5rem 1rem;
-    }
+        cart.forEach(item => {
+            message += `- ${item.item} (x${item.quantity}): ₹${item.price * item.quantity}\n`;
+            total += item.price * item.quantity;
+        });
 
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 0.8rem;
-    }
+        total += DELIVERY_CHARGE;
+        message += `\nTotal: ₹${total} (including ₹${DELIVERY_CHARGE} delivery charge)\n\n`;
+        message += `Bus Number: ${busNumber}\n`;
+        message += 'Estimated Arrival Time: [Your arrival time at Attingal Bus Stand]';
 
-    .option-buttons {
-        flex-direction: column;
-    }
-
-    .order-option-btn {
-        width: 100%;
-        font-size: 1.1rem;
-    }
-
-    .snack-list {
-        grid-template-columns: 1fr;
-    }
-
-    .snack-controls {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .add-to-cart {
-        width: 100%;
-        text-align: center;
-    }
-
-    .button-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .game-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 1rem 0.5rem;
-    }
-
-    h1 {
-        font-size: 1.6rem;
-    }
-
-    h2 {
-        font-size: 1.3rem;
-    }
-
-    nav ul {
-        gap: 0.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .game-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .button-grid {
-        grid-template-columns: 1fr;
-    }
-}
+        // Redirect to WhatsApp
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/9539024555?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
+    });
+});
